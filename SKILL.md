@@ -126,14 +126,13 @@ CSV 每行一条规则，关键字段：
 - **不增减** 文件，不改变 file 的 id/name/path/type/language
 - **不改变** 元素的 v-model、@click、:prop 等绑定
 
-### Element Plus icon 使用方式
+### Element Plus 组件使用约束
 
-在 `<template>` 中，图标**必须**通过 `<el-icon>` slot 使用，**严禁**通过 `:icon` prop 传入组件引用：
-
-- ✅ `<el-button><el-icon><Refresh /></el-icon></el-button>`
-- ❌ `<el-button :icon="Refresh" />`
-
-`:icon` prop 在 Vue SFC 模板中传入组件对象会导致 `getBoundingClientRect is not a function` 错误。
+- **图标**：必须通过 `<el-icon>` slot 使用，严禁通过 `:icon` prop 传入组件引用（会导致 `getBoundingClientRect is not a function`）
+  - ✅ `<el-button><el-icon><Refresh /></el-icon></el-button>`
+  - ❌ `<el-button :icon="Refresh" />`
+- **Prop 合法性**：不得给 Element Plus 组件添加不存在的 prop（如 `el-table` 无 `row-height`），行高/样式应通过 `:deep()` CSS 实现
+- **插槽列禁用 tooltip**：使用了自定义 `#default` 插槽的 `el-table-column`，不得加 `show-overflow-tooltip`（会导致冲突的悬浮气泡）
 
 ### Element Plus 组件覆盖
 
