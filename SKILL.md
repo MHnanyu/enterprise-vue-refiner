@@ -133,6 +133,8 @@ CSV 每行一条规则，关键字段：
   - ❌ `<el-button :icon="Refresh" />`
 - **Prop 合法性**：不得给 Element Plus 组件添加不存在的 prop（如 `el-table` 无 `row-height`），行高/样式应通过 `:deep()` CSS 实现
 - **插槽列禁用 tooltip**：使用了自定义 `#default` 插槽的 `el-table-column`，不得加 `show-overflow-tooltip`（会导致冲突的悬浮气泡）
+- **禁止嵌套 tooltip**：不在 `el-button` 外层包 `el-tooltip`（tooltip 容器会破坏 flex 布局间距），按钮文字本身已能表达操作含义
+- **操作列按钮**：使用 `link` 属性而非 `type="text"`（text 已 deprecated 且 padding 过大），纯 icon 按钮不需要 `gap` 间距
 
 ### Element Plus 组件覆盖
 
