@@ -126,6 +126,15 @@ CSV 每行一条规则，关键字段：
 - **不增减** 文件，不改变 file 的 id/name/path/type/language
 - **不改变** 元素的 v-model、@click、:prop 等绑定
 
+### Element Plus icon 使用方式
+
+在 `<template>` 中，图标**必须**通过 `<el-icon>` slot 使用，**严禁**通过 `:icon` prop 传入组件引用：
+
+- ✅ `<el-button><el-icon><Refresh /></el-icon></el-button>`
+- ❌ `<el-button :icon="Refresh" />`
+
+`:icon` prop 在 Vue SFC 模板中传入组件对象会导致 `getBoundingClientRect is not a function` 错误。
+
 ### Element Plus 组件覆盖
 
 需要覆盖 Element Plus 默认样式时，**必须在组件的 `<style scoped>` 中**使用 `:deep()` 选择器：
